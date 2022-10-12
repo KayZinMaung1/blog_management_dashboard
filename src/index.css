@@ -1,0 +1,21 @@
+:root {
+  --primary-color: #284511;
+  --secondary-color: #f57c00;
+  --white-color:#ffffff;
+  --light-grey:#F9F9F9;
+  --medium-grey: #eeeeee;
+}
+
+
+.ant-upload-list-picture-card-container {
+  width: 100% !important;
+  height: 25vh !important;
+  margin-right: 0px !important;
+  margin-bottom: 0px !important;
+
+}
+
+.ant-upload{
+  width: 100% !important ;
+  height: 25vh !important;
+}
