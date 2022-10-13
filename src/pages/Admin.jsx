@@ -37,6 +37,7 @@ const Admin = () => {
                 </Routes>
 
             </Box>
+
         </Box>
     )
 }

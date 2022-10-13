@@ -1,4 +1,4 @@
-import { Box, Grid, Typography } from "@mui/material";
+import { Box, Grid, Pagination, Typography } from "@mui/material";
 import AddIcon from '@mui/icons-material/Add';
 import { useNavigate } from "react-router-dom";
 import ContainedButton from "../../components/ContainedButton";
@@ -71,7 +71,16 @@ const ShowBlogPosts = () => {
                         ))}
                     </Grid>
                 </Grid>
+                <Grid item xs={12}>
+                    <Grid container spacing={2} p={2}>
+                        <Pagination count={10} shape="rounded" onChange={(e, page) => { console.log("page:", page) }} />
+                    </Grid>
+                </Grid>
+
             </Grid>
+
+
+
         </>
     )
 }
