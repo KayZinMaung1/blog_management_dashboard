@@ -166,7 +166,7 @@ export const editBlog = (id, data) => {
         dispatch({ type: SET_SUCCESS, payload: false });
         dispatch({ type: SET_LOADING });
         try {
-            await call("post", `api/blogs/${id}`, data);
+            await call("put", `api/blogs/${id}`, data);
             dispatch({ type: SET_SUCCESS, payload: true });
             dispatch({
                 type: REMOVE_ERROR

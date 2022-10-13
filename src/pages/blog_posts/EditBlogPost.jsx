@@ -90,14 +90,18 @@ const EditBlogPost = () => {
   const handleSave = async () => {
 
     const formData = new FormData();
+    //original data
+    formData.append("id", blog.id)
+    formData.append("imageName", blog.imageName);
+    formData.append("createdDate", blog.createdDate);
+
+    //updated data
     formData.append("title", title);
     formData.append("description", description);
     if (fileList[0]?.status !== "done") {  //when new image upload,
       formData.append("imageFile", fileList[0]?.originFileObj);
     }
 
-    console.log("title", title);
-    console.log("description", description)
     await dispatch(editBlog(id, formData))
   }
 
