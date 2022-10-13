@@ -31,7 +31,7 @@ const EditBlogPost = () => {
   const [description, setDescription] = useState("");
   const [fileList, setFileList] = useState([]);
   const status = useSelector((state) => state.status);
-  const error = useSelector((state)=> state.error);
+  const error = useSelector((state) => state.error);
 
   useEffect(() => {
     if (status.success) {
@@ -60,7 +60,7 @@ const EditBlogPost = () => {
         uid: blog?.id,
         name: blog?.title,
         status: "done",
-        url: blog?.photoUrl,
+        url: blog?.imageSrc,
       },
     ]);
   }, [blog]);
@@ -93,7 +93,7 @@ const EditBlogPost = () => {
     formData.append("title", title);
     formData.append("description", description);
     if (fileList[0]?.status !== "done") {  //when new image upload,
-      formData.append("photo", fileList[0]?.originFileObj);
+      formData.append("imageFile", fileList[0]?.originFileObj);
     }
 
     console.log("title", title);

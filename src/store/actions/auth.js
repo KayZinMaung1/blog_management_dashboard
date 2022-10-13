@@ -7,24 +7,28 @@ export const login = (data) => {
         dispatch({ type: SET_LOADING });
         dispatch({ type: REMOVE_ERROR });
         try {
-            const response = await call("post", "api/users/login", data);
-            const { user, token } = response.data;
-            const { name, email } = user;
+            const response = await call("post", "api/login", data);
+            const token = response.data;
             console.log("Access token:", token)
 
             localStorage.setItem("jwtToken", token);
+            await setAccessToken(token);
+
+            const userResponse = await call("get", "api/user/currentuser");
+            console.log("User:", userResponse.data)
+            const { userName, email, role } = userResponse.data;
+
             dispatch({
                 type: SET_CURRENT_USER,
-                payload: { name, email, token },
+                payload: { userName, email, role },
             })
 
             dispatch({
                 type: REMOVE_ERROR,
             })
-            setAccessToken(token);
         }
         catch (error) {
-            const { status} = error.response;
+            const { status } = error.response;
 
             if (status === 401) {
                 localStorage.removeItem("jwtToken");
@@ -33,7 +37,7 @@ export const login = (data) => {
                     payload: unauthorizedMessage,
                 });
             }
-  
+
             else {
                 dispatch({
                     type: SET_ERROR,
@@ -50,19 +54,20 @@ export const getUser = () => {
     return async (dispatch) => {
         dispatch({ type: SET_LOADING });
         try {
-            const response = await call("get", "api/users/myProfile");
-            const user = response.data.user;
-            const { name, email } = user;
+            const userResponse = await call("get", "api/user/currentuser");
+            const { userName, email, role } = userResponse.data;
+
             dispatch({
                 type: SET_CURRENT_USER,
-                payload: { name, email },
-            });
+                payload: { userName, email, role },
+            })
+
             dispatch({
                 type: REMOVE_ERROR,
             })
         }
         catch (error) {
-            const { status} = error.response;
+            const { status } = error.response;
 
             if (status === 401) {
                 localStorage.removeItem("jwtToken");
@@ -71,7 +76,7 @@ export const getUser = () => {
                     payload: unauthorizedMessage,
                 });
             }
-  
+
             else {
                 dispatch({
                     type: SET_ERROR,
@@ -84,16 +89,16 @@ export const getUser = () => {
     }
 }
 
-export const logout = ()=>{
-    return async(dispatch)=>{
+export const logout = () => {
+    return async (dispatch) => {
         localStorage.removeItem("jwtToken");
         setAccessToken(null);
         dispatch({
             type: SET_CURRENT_USER,
-            payload:{}
+            payload: {}
         });
         dispatch({
-            type:REMOVE_ERROR
+            type: REMOVE_ERROR
         });
     }
 }

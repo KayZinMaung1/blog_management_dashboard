@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 import { deleteBlog } from '../store/actions';
 import { getReadableDateDisplay } from '../utils/convertToHumanReadableTime';
 const BlogCard = ({ blog }) => {
+
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const handleDelete = async (id) => {
@@ -20,7 +21,7 @@ const BlogCard = ({ blog }) => {
                 <CardMedia
                     component="img"
                     height="200"
-                    image={blog.photoUrl}
+                    image={blog.imageSrc}
                     alt="Blog Photo"
                 />
                 <CardContent sx={{ height: "220px" }}>

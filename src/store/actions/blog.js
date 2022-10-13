@@ -1,4 +1,4 @@
-import { call, host } from "../../services/api";
+import { call } from "../../services/api";
 import { serverErrorMessage, unauthorizedMessage } from "../../utils/message";
 import { DELETE_BLOG, REMOVE_ERROR, SET_BLOG, SET_BLOGS, SET_DELETE, SET_ERROR, SET_LOADING, SET_SUCCESS } from "../type"
 
@@ -7,14 +7,12 @@ export const getBlogs = () => {
         dispatch({ type: SET_LOADING });
         try {
             const response = await call("get", "api/blogs");
-            const data = response.data.blogs;
+            const data = response.data;
 
             const transformResult = data.map((data) => {
-                const photoUrl = `${host}/api/images/${data.photo}`;
                 return {
                     ...data,
                     key: data.id,
-                    photoUrl: photoUrl
                 }
             });
 
@@ -52,7 +50,6 @@ export const getBlogs = () => {
 }
 
 export const createBlog = (data) => {
-    console.log("data:", data)
     return async (dispatch) => {
         dispatch({ type: SET_SUCCESS, payload: false });
         dispatch({ type: SET_LOADING });
@@ -131,17 +128,11 @@ export const getBlog = (id) => {
         dispatch({ type: SET_LOADING });
         try {
             const response = await call("get", `api/blogs/${id}`);
-            const blog = response.data.blog;
-            const photoUrl = `${host}/api/images/${blog.photo}`;
-
-            const transformResult = {
-                ...blog,
-                photoUrl: photoUrl
-            }
+            const blog = response.data;
 
             dispatch({
                 type: SET_BLOG,
-                payload: transformResult,
+                payload: blog,
             });
             dispatch({
                 type: REMOVE_ERROR

@@ -19,32 +19,32 @@ const ShowBlogPosts = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const blogs = useSelector((state) => state.blog.blogs);
-    const status = useSelector((state)=> state.status);
-    const error = useSelector((state)=> state.error);
+    const status = useSelector((state) => state.status);
+    const error = useSelector((state) => state.error);
 
     useEffect(() => {
         if (status.delete) {
-          successNotify(successDeleteMessage);
+            successNotify(successDeleteMessage);
         }
         return () => status.delete;
-      }, [status.delete]);
+    }, [status.delete]);
 
-      useEffect(() => {
+    useEffect(() => {
         if (error.message !== null) {
-          errorNotify(error.message);
+            errorNotify(error.message);
         }
         return () => error.message;
-      }, [error.message]);
-    
+    }, [error.message]);
+
     useEffect(() => {
         dispatch(getBlogs());
     }, [dispatch])
 
-    
+
 
     return (
         <>
-           <ToastContainer />
+            <ToastContainer />
             <Grid container spacing={2}>
                 <Grid item lg={10} md={8} xs={12}>
                     <Box sx={{ width: "100%", bgcolor: 'white' }}>
@@ -62,10 +62,10 @@ const ShowBlogPosts = () => {
                     </Box>
                 </Grid>
                 <Grid item xs={12}>
-                    <Grid container spacing={2}>
+                    <Grid container spacing={2} >
                         {blogs.map((blog) => (
 
-                            <Grid item lg={4} md={6} xs={12}>
+                            <Grid item lg={4} md={6} xs={12} key={blog.id}>
                                 <BlogCard blog={blog} />
                             </Grid>
                         ))}

@@ -55,8 +55,6 @@ const ResponsiveAppBar = ({ pages }) => {
         setAnchorElUser(null);
     };
 
-
-
     return (
         <Box>
             <AppBar component='nav' sx={{ bgcolor: "var(--primary-color)" }}>
@@ -129,7 +127,7 @@ const ResponsiveAppBar = ({ pages }) => {
                         </Menu>
                     </Box>
                     <Avatar
-                        alt="Second Tap Root"
+                        alt="Blog Management"
                         src={logo}
                         sx={{ width: 40, height: 40, border: "0px solid var(--light-grey)", display: { xs: 'flex', md: 'none' } }}
 
@@ -149,7 +147,7 @@ const ResponsiveAppBar = ({ pages }) => {
                             textDecoration: 'none',
                         }}
                     >
-                        SECOND TAP ROOT
+                        BLOG MANAGEMENT
                     </Typography>
                     <Box sx={{ flexGrow: 1 }}>
 
@@ -158,7 +156,7 @@ const ResponsiveAppBar = ({ pages }) => {
                     <Box sx={{ flexGrow: 0 }}>
                         <Tooltip title="Open Profile">
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                <Avatar sx={{ bgcolor: "var(--secondary-color)" }}>{user?.name?.substr(0, 1)}</Avatar>
+                                <Avatar sx={{ bgcolor: "var(--secondary-color)" }}>{user?.userName?.substr(0, 1)}</Avatar>
                             </IconButton>
                         </Tooltip>
                         <Menu
@@ -182,7 +180,7 @@ const ResponsiveAppBar = ({ pages }) => {
                             <Stack alignItems="center">
 
                                 <MenuItem onClick={handleCloseUserMenu}>
-                                    <Typography textAlign="center" sx={{ color: "var(--primary-color)" }}>{user.name}</Typography>
+                                    <Typography textAlign="center" sx={{ color: "var(--primary-color)" }}>{user.userName}</Typography>
                                 </MenuItem>
                                 <MenuItem onClick={handleCloseUserMenu}>
                                     <OutlinedButton text="Logout" size="small" onClick={handleLogout} />

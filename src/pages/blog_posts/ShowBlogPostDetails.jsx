@@ -23,7 +23,7 @@ const ShowBlogPostDetails = () => {
         height: "35vh",
         width: "50%",
         position: "relative",
-        backgroundImage: `url(${blog.photoUrl})`,
+        backgroundImage: `url(${blog.imageSrc})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
     }));

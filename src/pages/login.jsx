@@ -26,14 +26,14 @@ const StyledPaper = styled(Paper)(({ theme }) => ({
 
 
 const Login = () => {
-    const [email, setEmail] = useState("");
+    const [userName, setUserName] = useState("");
     const [password, setPassword] = useState("");
     const dispatch = useDispatch();
 
 
     const handleLogin = () => {
         const data = {
-            email: email,
+            userName: userName,
             password: password
         }
         dispatch(login(data));
@@ -59,7 +59,7 @@ const Login = () => {
                                 <Avatar
                                     alt="Second Tap Root"
                                     src={logo}
-                                    sx={{ width: 56, height: 56, border: "0px solid var(--medium-grey)", p: "10px" }}
+                                    sx={{ width: 80, height: 80, border: "0px solid var(--medium-grey)", p: "10px" }}
                                 />
                                 <Typography
                                     variant="h4"
@@ -72,12 +72,11 @@ const Login = () => {
                                 </Typography>
                                 <TextField
                                     required
-                                    name="email"
-                                    type="email"
-                                    placeholder="johndoe@email.com"
-                                    label="Email"
+                                    name="userName"
+                                    placeholder="Username"
+                                    label="Username"
                                     sx={{ width: "100%" }}
-                                    onChange={(e) => setEmail(e.target.value)}
+                                    onChange={(e) => setUserName(e.target.value)}
                                 />
                                 <TextField
                                     required

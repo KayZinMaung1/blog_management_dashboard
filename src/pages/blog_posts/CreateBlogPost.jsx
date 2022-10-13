@@ -24,7 +24,7 @@ const CreateBlogPost = () => {
   const [description, setDescription] = useState("");
   const dispatch = useDispatch();
   const status = useSelector((state) => state.status);
-  const error = useSelector((state)=> state.error);
+  const error = useSelector((state) => state.error);
   const [editorState, setEditorState] = useState();
 
   useEffect(() => {
@@ -56,20 +56,19 @@ const CreateBlogPost = () => {
   };
 
   const handleSave = async () => {
-    console.log("Description:", description)
+
     const formData = new FormData();
-    formData.append("photo", fileList[0]?.originFileObj);
+    formData.append("imageFile", fileList[0]?.originFileObj);
     formData.append("title", title);
     formData.append("description", description);
     await dispatch(createBlog(formData));
 
   }
-  
 
   return (
 
     <Stack spacing={3}>
-      <ToastContainer height="5px"/>
+      <ToastContainer height="5px" />
       <Box sx={{ bgcolor: 'white' }}>
         <Typography
           variant="h4"
