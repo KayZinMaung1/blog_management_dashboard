@@ -23,7 +23,7 @@ const pages = [
 
 const Admin = () => {
     return (
-        <Box>
+        <>
             <ResponsiveAppBar pages={pages} />
             <Box sx={{ bgcolor: 'white', mt: 15, padding: '1% 16%' }} component='main'>
                 <Routes>
@@ -38,7 +38,7 @@ const Admin = () => {
 
             </Box>
 
-        </Box>
+        </>
     )
 }
 export default Admin;

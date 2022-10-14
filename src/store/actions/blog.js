@@ -1,53 +1,53 @@
 import { call } from "../../services/api";
 import { serverErrorMessage, unauthorizedMessage } from "../../utils/message";
-import { DELETE_BLOG, REMOVE_ERROR, SET_BLOG, SET_BLOGS, SET_DELETE, SET_ERROR, SET_LOADING, SET_SUCCESS } from "../type"
+import { DELETE_BLOG, REMOVE_ERROR, SET_BLOG, SET_BLOGS, SET_DELETE, SET_ERROR, SET_LOADING, SET_SUCCESS, SET_TOTAL_COUNT, SET_TOTAL_PAGES } from "../type"
 
-export const getBlogs = () => {
-    return async (dispatch) => {
-        dispatch({ type: SET_LOADING });
-        try {
-            const response = await call("get", "api/blogs");
-            const data = response.data;
+// export const getBlogs = () => {
+//     return async (dispatch) => {
+//         dispatch({ type: SET_LOADING });
+//         try {
+//             const response = await call("get", "api/blogs");
+//             const data = response.data;
 
-            const transformResult = data.map((data) => {
-                return {
-                    ...data,
-                    key: data.id,
-                }
-            });
+//             const transformResult = data.map((data) => {
+//                 return {
+//                     ...data,
+//                     key: data.id,
+//                 }
+//             });
 
-            dispatch({
-                type: SET_BLOGS,
-                payload: transformResult,
-            });
+//             dispatch({
+//                 type: SET_BLOGS,
+//                 payload: transformResult,
+//             });
 
-            dispatch({
-                type: REMOVE_ERROR,
-            })
+//             dispatch({
+//                 type: REMOVE_ERROR,
+//             })
 
-        }
-        catch (error) {
-            const { status } = error.response;
+//         }
+//         catch (error) {
+//             const { status } = error.response;
 
-            if (status === 401) {
-                localStorage.removeItem("jwtToken");
-                dispatch({
-                    type: SET_ERROR,
-                    payload: unauthorizedMessage,
-                });
-            }
+//             if (status === 401) {
+//                 localStorage.removeItem("jwtToken");
+//                 dispatch({
+//                     type: SET_ERROR,
+//                     payload: unauthorizedMessage,
+//                 });
+//             }
 
-            else {
-                dispatch({
-                    type: SET_ERROR,
-                    payload: serverErrorMessage,
-                });
-            }
+//             else {
+//                 dispatch({
+//                     type: SET_ERROR,
+//                     payload: serverErrorMessage,
+//                 });
+//             }
 
-        }
-        dispatch({ type: SET_LOADING })
-    }
-}
+//         }
+//         dispatch({ type: SET_LOADING })
+//     }
+// }
 
 export const createBlog = (data) => {
     return async (dispatch) => {
@@ -199,3 +199,63 @@ export const editBlog = (id, data) => {
         dispatch({ type: SET_LOADING });
     }
 }
+
+export const getBlogsWithPagination = (perPage = 3, currentPage = 1) => {
+    console.log("kkk:", currentPage, perPage)
+
+    return async (dispatch) => {
+        dispatch({ type: SET_LOADING });
+        try {
+            const response = await call("get", `api/blogs?perPage=${perPage}&currentPage=${currentPage}`);
+            const data = response.data;
+            console.log("data:", data);
+            const blogs = data.results;
+
+            const transformResult = blogs.map((blog) => {
+                return {
+                    ...blog,
+                    key: blog.id,
+                }
+            });
+
+            dispatch({
+                type: SET_BLOGS,
+                payload: transformResult,
+            });
+            dispatch({
+                type: SET_TOTAL_COUNT,
+                payload: data.totalCount,
+            });
+            dispatch({
+                type: SET_TOTAL_PAGES,
+                payload: data.totalPages,
+            });
+
+            dispatch({
+                type: REMOVE_ERROR,
+            })
+
+        }
+        catch (error) {
+            const { status } = error.response;
+
+            if (status === 401) {
+                localStorage.removeItem("jwtToken");
+                dispatch({
+                    type: SET_ERROR,
+                    payload: unauthorizedMessage,
+                });
+            }
+
+            else {
+                dispatch({
+                    type: SET_ERROR,
+                    payload: serverErrorMessage,
+                });
+            }
+
+        }
+        dispatch({ type: SET_LOADING })
+    }
+}
+

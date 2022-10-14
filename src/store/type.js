@@ -12,5 +12,8 @@ export const REMOVE_ERROR = "REMOVE_ERROR";
 export const SET_BLOG = "SET_BLOG";
 export const SET_BLOGS = "SET_BLOGS";
 export const DELETE_BLOG = "DELETE_BLOG";
+export const SET_TOTAL_COUNT = "SET_TOTAL_COUNT";
+export const SET_TOTAL_PAGES = "SET_TOTAL_PAGES";
+
 
 

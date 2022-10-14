@@ -28,22 +28,23 @@ export const login = (data) => {
             })
         }
         catch (error) {
-            const { status } = error.response;
+            console.log("error:", error)
+            // const { status } = error.response;
 
-            if (status === 401) {
-                localStorage.removeItem("jwtToken");
-                dispatch({
-                    type: SET_ERROR,
-                    payload: unauthorizedMessage,
-                });
-            }
+            // if (status === 401) {
+            //     localStorage.removeItem("jwtToken");
+            //     dispatch({
+            //         type: SET_ERROR,
+            //         payload: unauthorizedMessage,
+            //     });
+            // }
 
-            else {
-                dispatch({
-                    type: SET_ERROR,
-                    payload: serverErrorMessage,
-                });
-            }
+            // else {
+            //     dispatch({
+            //         type: SET_ERROR,
+            //         payload: serverErrorMessage,
+            //     });
+            // }
 
         }
         dispatch({ type: SET_LOADING });

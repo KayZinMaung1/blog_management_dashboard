@@ -5,17 +5,17 @@ import AddIcon from '@mui/icons-material/Add';
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { getBlogs } from "../store/actions"
+import { getBlogsWithPagination } from "../store/actions"
 
 const Dashboard = () => {
    const navigate = useNavigate();
-   const blogs = useSelector((state) => state.blog.blogs);
+   const blog = useSelector((state) => state.blog);
    const dispatch = useDispatch();
    const user = useSelector((state) => state.auth.user);
 
    useEffect(() => {
       const fetchData = () => {
-         dispatch(getBlogs());
+         dispatch(getBlogsWithPagination());
       }
       fetchData();
       return fetchData();
@@ -49,7 +49,7 @@ const Dashboard = () => {
             <Grid item xs={12}>
                <Grid container spacing={2}>
                   <Grid item lg={4} md={6} xs={12}>
-                     <BasicCard qty={blogs.length} label="Blog Posts" />
+                     <BasicCard qty={blog.totalCount} label="Blog Posts" />
                   </Grid>
                </Grid>
             </Grid>

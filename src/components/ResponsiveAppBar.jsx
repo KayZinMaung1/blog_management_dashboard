@@ -156,7 +156,7 @@ const ResponsiveAppBar = ({ pages }) => {
                     <Box sx={{ flexGrow: 0 }}>
                         <Tooltip title="Open Profile">
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                <Avatar sx={{ bgcolor: "var(--secondary-color)" }}>{user?.userName?.substr(0, 1)}</Avatar>
+                                <Avatar sx={{ bgcolor: "var(--secondary-color)" }}>{user?.userName?.substr(0, 1).toUpperCase()}</Avatar>
                             </IconButton>
                         </Tooltip>
                         <Menu
