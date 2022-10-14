@@ -60,7 +60,7 @@ const ResponsiveAppBar = ({ pages }) => {
             <AppBar component='nav' sx={{ bgcolor: "var(--primary-color)" }}>
                 <Toolbar>
                     <Avatar
-                        alt="Blog Management"
+                        alt="Coffee O's Clock"
                         src={logo}
                         sx={{ width: 40, height: 40, border: "0px solid var(--light-grey)", display: { xs: 'none', md: 'flex' } }}
 
@@ -81,7 +81,7 @@ const ResponsiveAppBar = ({ pages }) => {
 
                         }}
                     >
-                        BLOG MANAGEMENT
+                        COFFEE O's CLOCK
                     </Typography>
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -127,7 +127,7 @@ const ResponsiveAppBar = ({ pages }) => {
                         </Menu>
                     </Box>
                     <Avatar
-                        alt="Blog Management"
+                        alt="Coffee O's Clock"
                         src={logo}
                         sx={{ width: 40, height: 40, border: "0px solid var(--light-grey)", display: { xs: 'flex', md: 'none' } }}
 
@@ -147,7 +147,7 @@ const ResponsiveAppBar = ({ pages }) => {
                             textDecoration: 'none',
                         }}
                     >
-                        BLOG MANAGEMENT
+                        COFFEE O's CLOCK
                     </Typography>
                     <Box sx={{ flexGrow: 1 }}>
 

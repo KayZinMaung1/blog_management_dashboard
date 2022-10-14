@@ -200,7 +200,7 @@ export const editBlog = (id, data) => {
     }
 }
 
-export const getBlogsWithPagination = (perPage = 3, currentPage = 1) => {
+export const getBlogsWithPagination = (perPage = 4, currentPage = 1) => {
     console.log("kkk:", currentPage, perPage)
 
     return async (dispatch) => {

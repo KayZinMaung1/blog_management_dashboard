@@ -15,6 +15,7 @@ const BlogCard = ({ blog }) => {
     const handleDelete = async (id) => {
         await dispatch(deleteBlog(id));
     }
+    console.log("blog:", blog)
     return (
         <Paper elevation={1} >
             <Card >
@@ -24,7 +25,7 @@ const BlogCard = ({ blog }) => {
                     image={blog.imageSrc}
                     alt="Blog Photo"
                 />
-                <CardContent sx={{ height: "220px" }}>
+                <CardContent sx={{ height: "300px" }}>
                     <Typography gutterBottom variant="h6" component="h3" sx={{ fontWeight: 'bold' }}>
                         {blog.title}
                     </Typography>
@@ -33,7 +34,7 @@ const BlogCard = ({ blog }) => {
                     </Typography>
                     <Typography variant="body2" sx={{ lineHeight: 2 }}>
                         <span dangerouslySetInnerHTML={{
-                            __html: (blog?.description.length >= 200) ? blog?.description.substr(0, 300) + "..." : blog?.description
+                            __html: (blog?.description.length >= 200) ? blog?.description.substr(0, 250) + "..." : blog?.description
                         }} />
                     </Typography>
 

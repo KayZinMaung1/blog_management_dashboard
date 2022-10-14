@@ -21,12 +21,14 @@ const ShowBlogPostDetails = () => {
 
     const ImagePaper = styled(Paper)(({ theme }) => ({
         height: "35vh",
-        width: "50%",
+        width: "32vw",
         position: "relative",
         backgroundImage: `url(${blog.imageSrc})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
     }));
+
+
 
     return (
         <>

@@ -14,7 +14,7 @@ const pages = [
         element: <Dashboard />
     },
     {
-        name: 'Blog Posts',
+        name: 'Blogs',
         route: 'show-blog-posts',
         element: <ShowBlogPosts />
     },

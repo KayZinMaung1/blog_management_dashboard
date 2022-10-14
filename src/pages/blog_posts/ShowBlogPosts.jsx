@@ -22,7 +22,7 @@ const ShowBlogPosts = () => {
     const status = useSelector((state) => state.status);
     const error = useSelector((state) => state.error);
     const [currentPage, setCurrentPage] = useState(1);
-    const [perPage] = useState(3);
+    const [perPage] = useState(4);
 
     useEffect(() => {
         if (status.delete) {
@@ -54,7 +54,7 @@ const ShowBlogPosts = () => {
                             variant="h4"
                             component="h1"
                         >
-                            <b>Blog Posts</b>
+                            <b>Blogs</b>
                         </Typography>
                     </Box>
                 </Grid>

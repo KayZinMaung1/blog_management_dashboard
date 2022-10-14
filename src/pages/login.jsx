@@ -70,8 +70,9 @@ const Login = () => {
                                         sx={{ width: 80, height: 80, border: "0px solid var(--medium-grey)", p: "10px" }}
                                     />
                                     <Typography
-                                        variant="h4"
+                                        variant="h5"
                                         component="h1"
+                                        color="var(--secondary-color)"
                                     >
                                         <b>Welcome!</b>
                                     </Typography>
