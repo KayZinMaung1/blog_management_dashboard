@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { Avatar, Grid, Paper, TextField, Typography } from "@mui/material";
+import { Avatar, createTheme, Grid, Paper, TextField, Typography } from "@mui/material";
 import { Box, Container, Stack } from "@mui/system";
 import { useState } from "react";
 import ContainedButton from "../components/ContainedButton";
@@ -24,6 +24,14 @@ const StyledPaper = styled(Paper)(({ theme }) => ({
     elevation: 1,
 }));
 
+const theme = createTheme();
+const StyledContainer = styled(Container)(() => ({
+    [theme.breakpoints.down("xl")]: [{ minWidth: "70vw", height: "70vh" }],
+    [theme.breakpoints.down("md")]: [{ minWidth: "80vw", height: "70vh" }],
+    [theme.breakpoints.down("sm")]: [{ minWidth: "95vw", height: "70vh" }],
+
+}));
+
 
 const Login = () => {
     const [userName, setUserName] = useState("");
@@ -41,7 +49,7 @@ const Login = () => {
 
     return (
         <Box display="flex" alignItems="center" justifyContent="center" sx={{ p: "15vh" }}>
-            <Container sx={{ minWidth: "70vw", height: "70vh" }} >
+            <StyledContainer sx={{ minWidth: "70vw", height: "70vh" }} >
                 <StyledPaper>
                     <Grid container alignItems="center">
                         <Grid item lg={6} xs={0}>
@@ -96,7 +104,7 @@ const Login = () => {
                         </Grid>
                     </Grid>
                 </StyledPaper>
-            </Container>
+            </StyledContainer>
         </Box>
 
 
